@@ -19,5 +19,5 @@ def plot_train(train_losses, train_accuracies, test_accuracies):
     plt.subplot(1, 3, 3)
     plt.plot(range(len(test_accuracies)), test_accuracies, '-ro')
     plt.title("Testing Accuracy")
-    plt.show()
+    plt.savefig("bank-splitnn.png")
 
