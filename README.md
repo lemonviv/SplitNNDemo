@@ -76,13 +76,14 @@ For running with docker container, you can use the following script
 to utilize the notebook for baselines.
 
 ```
-docker run -it -p 8888:8888 splitnndemo:v0.1
+docker run -it -v $(pwd):/splitnndemo -p 8888:8888 splitnndemo:v0.1
 ```
 
 For the splitnn solution, you can run the following script to start a 
 container with the detach mode.
 
 ```
+cd <SplitNNDemo/>
 docker run -itd -v $(pwd):/splitnndemo --entrypoint /bin/bash splitnndemo:v0.1
 ```
 
@@ -91,9 +92,9 @@ to train the splitnn model.
 
 ```
 docker container exec -it <42174163fa3d> /bin/bash
-python3 server.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_server.csv --epochs 100
-python3 party.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_active.csv --epochs 100
-python3 party.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_passive.csv --epochs 100
+python server.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_server.csv --epochs 100
+python party.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_active.csv --epochs 100
+python party.py --data_file /splitnndemo/dataset/bank_additional_full_filtered_balanced_passive.csv --epochs 100
 ```
 
 ## Results
